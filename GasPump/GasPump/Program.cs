@@ -15,12 +15,18 @@ namespace GasPump
 
         static void Main(string[] args)
         {
+            
+            execute();
+            Console.ReadLine();
+        }
+        public static void execute()
+        {
             double total = 0.0;
             // your implementation here
             Console.WriteLine("Enter your purchased gas type, press q/Q to quit:");
 
             string userInput = Console.ReadLine();
-            if(UserEnteredSentinelValue(userInput)== true)
+            if (UserEnteredSentinelValue(userInput) == true)
             {
                 Environment.Exit(0);
             }
@@ -30,43 +36,23 @@ namespace GasPump
             Console.WriteLine("Enter amount of gas to be purchased:");
             string amount = Console.ReadLine();
 
-           if (UserEnteredValidAmount(amount)==true && UserEnteredValidGasType(userInput)==true)
+            if (UserEnteredValidAmount(amount) == true && UserEnteredValidGasType(userInput) == true)
             {
                 GasType g = GasTypeMapper(c);
                 double gasAmount = GasPriceMapper(g);
                 Console.WriteLine("Your purchased gas type=" + g);
                 Console.WriteLine("Your requested gas amount=" + amount);
                 CalculateTotalCost(g, Convert.ToInt32(gasAmount), ref total);
+                execute();
 
 
 
-                Console.WriteLine("Enter your purchased gas type, press q/Q to quit:");
-
-                 userInput = Console.ReadLine();
-                if (UserEnteredSentinelValue(userInput) == true)
-                {
-                    Environment.Exit(0);
-                }
-                else {
-                    c = Convert.ToChar(userInput);
-
-
-                    Console.WriteLine("Enter amount of gas to be purchased:");
-                    amount = Console.ReadLine();
-                     g = GasTypeMapper(c);
-                    gasAmount = GasPriceMapper(g);
-                    Console.WriteLine("Your purchased gas type=" + g);
-                    Console.WriteLine("Your requested gas amount=" + amount);
-                    CalculateTotalCost(g, Convert.ToInt32(gasAmount), ref total);
-                }
             }
-            else
+            else if (UserEnteredValidAmount(amount) == false || UserEnteredValidGasType(userInput) == false)
             {
-                Console.WriteLine("Please enter valid amount or gas type");
+                Console.WriteLine("please enter valid values");
+                execute();
             }
-          
-            Console.ReadLine();
-
         }
 
         // use this method to check and see if sentinel value is entered
