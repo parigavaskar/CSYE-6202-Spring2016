@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication8
 {
-    class HourlyEmployee : Employee
+   public class HourlyEmployee : Employee
     {
         private float hours;
         private float hourlyWage;
@@ -17,7 +17,11 @@ namespace ConsoleApplication8
         }
         public override float calculatePay()
         {
-            return hours * hourlyWage;
+            if (hours>=1 && hours <= 40)
+            {
+                return hours * hourlyWage;
+            }
+            else return ((hours - 40) *(float) 1.5 * hourlyWage)+ (40*hourlyWage);
         }
     }
 }

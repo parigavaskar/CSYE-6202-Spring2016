@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication8
 {
-    class SalariedEmployee : Employee
+   public class SalariedEmployee : Employee
     {
         private float salary;
         public SalariedEmployee(String name, String ssn, float salary) : base(name,ssn)

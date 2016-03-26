@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication8
 {
-    class Program
+   public class Program
     {
         String sename, scname, cename, hename;
         string ssn1, ssn2, ssn3, ssn4;
@@ -30,7 +30,7 @@ namespace ConsoleApplication8
             Console.Write("Weekly salary: $ ");
             salary = float.Parse(Console.ReadLine());
             
-            if (isValidSalaried())
+            if (isValidSalaried(sename,ssn1,salary))
             {
                 se = new SalariedEmployee(sename, ssn1, salary);
                 return se;
@@ -43,7 +43,7 @@ namespace ConsoleApplication8
             return se;
 
         }
-        private bool isValidSalaried()
+        public bool isValidSalaried(String sename, String ssn1, float salary)
         {
             Regex regex = new Regex(@"^([A-Z][a-z]+)(\s[A-Z][a-z]+)*$");
            // Match match = regex.Match(sename.Trim());
@@ -78,7 +78,7 @@ namespace ConsoleApplication8
         }
         
 
-        private  bool isValidHourly()
+        public  bool isValidHourly()
         {
             if ((new Regex(@"^([A-Z][a-z]+)(\s[A-Z][a-z]+)*$").Match(hename).Success) && (new Regex(@"^\d{3}-\d{2}-\d{4}$").Match(ssn2).Success) && (new Regex(@"^[0-9]*(?:\.[0-9]*)?$").Match(hourlyWage.ToString()).Success) && (new Regex(@"^[0-9]*(?:\.[0-9]*)?$").Match(hoursWorked.ToString()).Success))
                 return true;
@@ -107,7 +107,7 @@ namespace ConsoleApplication8
             return ce;
         }
 
-        private  bool isValidCommision()
+        public  bool isValidCommision()
         {
             if ((new Regex(@"^([A-Z][a-z]+)(\s[A-Z][a-z]+)*$").Match(cename).Success) && (new Regex(@"^\d{3}-\d{2}-\d{4}$").Match(ssn3).Success) && (new Regex(@"^[0-9]*(?:\.[0-9]*)?$").Match(grossSales.ToString()).Success) && (new Regex(@"^[0-9]*(?:\.[0-9]*)?$").Match(commissionRate.ToString()).Success))
                 return true;
@@ -126,7 +126,7 @@ namespace ConsoleApplication8
             commissionRate = float.Parse(Console.ReadLine());
             Console.Write("Base salary: $");
             baseSalary = float.Parse(Console.ReadLine());
-            if (isValidSalCommision())
+            if (isValidSalCommision(scname, ssn4, grossSales, commissionRate, baseSalary))
             {
                 sc = new SCEmployee(scname, ssn4, grossSales, commissionRate, baseSalary);
                 return sc;
@@ -138,14 +138,14 @@ namespace ConsoleApplication8
             return sc;
         }
 
-        private bool isValidSalCommision()
+        public bool isValidSalCommision(String name, string ssn, float grossSales, float commissionRate, float baseSalary)
         {
             if ((new Regex(@"^([A-Z][a-z]+)(\s[A-Z][a-z]+)*$").Match(scname).Success) && (new Regex(@"^\d{3}-\d{2}-\d{4}$").Match(ssn4).Success) && (new Regex(@"^[0-9]*(?:\.[0-9]*)?$").Match(baseSalary.ToString()).Success) && (new Regex(@"^[0-9]*(?:\.[0-9]*)?$").Match(commissionRate.ToString()).Success) &&  (new Regex(@"^[0-9]*(?:\.[0-9]*)?$").Match(grossSales.ToString()).Success))
                 return true;
             else return false;
         }
 
-        static void Main(string[] args)
+       public static void Main(string[] args)
         {
 
             Program p = new Program();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication8
 {
-    class CommissionEmployee : Employee
+   public class CommissionEmployee : Employee
     {
         private float grossSales;
         private float commissionRate;

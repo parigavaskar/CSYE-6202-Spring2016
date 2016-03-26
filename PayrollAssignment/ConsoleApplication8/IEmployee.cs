@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication8
 {
-    interface IEmployee
+  public  interface IEmployee
     {
           float calculateBonus();
         
