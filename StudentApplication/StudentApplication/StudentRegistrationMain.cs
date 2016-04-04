@@ -90,6 +90,7 @@ namespace StudentApplication
                 InformationTable.DataSource = studentList;
             }
         }
+        //com
 
         private void RemoveStudentOnStudentRemoved(object sender, EventArgs eventArgs)
         {
